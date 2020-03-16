@@ -1,6 +1,13 @@
-public class Rover {
-    public short location;
+import java.awt.*;
 
-    public Rover(short dropLocation) {
+public class Rover {
+    private final Point location;
+
+    public Rover(Point dropLocation) {
+        this.location = dropLocation;
+    }
+
+    public Point getLocation() {
+        return location;
     }
 }
