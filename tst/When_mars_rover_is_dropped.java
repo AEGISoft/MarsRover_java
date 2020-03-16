@@ -20,9 +20,21 @@ class When_mars_rover_is_dropped {
 
         Rover rover = new Rover(dropLocation);
 
-        rover.move('F');
+        rover.move("F");
 
         Point expectedLocation = new Point(0,1);
+
+        Assertions.assertEquals(expectedLocation, rover.getLocation());
+     }
+     @Test
+    public void checkMoveBackwards(){
+        Point dropLocation = new Point(0,0);
+
+        Rover rover = new Rover(dropLocation);
+
+        rover.move("B");
+
+        Point expectedLocation = new Point(0,-1);
 
         Assertions.assertEquals(expectedLocation, rover.getLocation());
      }
