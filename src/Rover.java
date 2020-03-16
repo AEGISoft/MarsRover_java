@@ -1,7 +1,7 @@
 import java.awt.*;
 
 public class Rover {
-    private final Point location;
+    private Point location;
 
     public Rover(Point dropLocation) {
         this.location = dropLocation;
@@ -9,5 +9,9 @@ public class Rover {
 
     public Point getLocation() {
         return location;
+    }
+
+    public void move(char f) {
+        location = new Point((int) location.getX(), (int) location.getY() + 1);
     }
 }
