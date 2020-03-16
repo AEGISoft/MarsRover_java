@@ -11,7 +11,13 @@ public class Rover {
         return location;
     }
 
-    public void move(char f) {
-        location = new Point((int) location.getX(), (int) location.getY() + 1);
+    public void move(String f) {
+    	if("f".equalsIgnoreCase(f)){
+			location = new Point((int) location.getX(), (int) location.getY() + 1);
+		}
+    	else{
+			location = new Point((int) location.getX(), (int) location.getY() - 1);
+		}
+
     }
 }
