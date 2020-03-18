@@ -11,8 +11,8 @@ public class Rover {
         return location;
     }
 
-    public void move(String f) {
-    	if("f".equalsIgnoreCase(f)){
+    public void move(String command) {
+    	if("f".equalsIgnoreCase(command)){
 			location = new Point((int) location.getX(), (int) location.getY() + 1);
 		}
     	else{
