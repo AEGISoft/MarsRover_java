@@ -3,7 +3,7 @@ import java.awt.*;
 public class Rover {
     private Point location;
 
-    public Rover(Point dropLocation) {
+    public Rover(Point dropLocation, DirectionEnum direction) {
         this.location = dropLocation;
     }
 
@@ -20,4 +20,8 @@ public class Rover {
 		}
 
     }
+
+	public DirectionEnum getDirection() {
+		return DirectionEnum.NORTH;
+	}
 }
