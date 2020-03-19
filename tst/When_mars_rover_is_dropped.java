@@ -2,9 +2,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.EnumSource;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
 import java.awt.*;
 import java.util.stream.Stream;
@@ -60,15 +58,15 @@ class When_mars_rover_is_commanded_to_move {
 
 class When_mars_rover_is_commanded_to_turn {
 
-    private static Stream<Arguments> provideDirectionsforRightTest() {
+    private static Stream<Arguments> provideDirectionsForRightTest() {
         return Stream.of(
-                Arguments.of(DirectionEnum.NORTH,DirectionEnum.EAST)
-                //Arguments.of(DirectionEnum.EAST,DirectionEnum.SOUTH)
+                Arguments.of(DirectionEnum.NORTH,DirectionEnum.EAST),
+                Arguments.of(DirectionEnum.EAST,DirectionEnum.SOUTH)
         );
     }
 
 	@ParameterizedTest
-    @MethodSource("provideDirectionsforRightTest")
+    @MethodSource("provideDirectionsForRightTest")
 	void right_it_should_be_facing_90_degrees_clockwise(DirectionEnum directionStart, DirectionEnum expectedDirection) {
 		Point dropLocation = new Point(0,0);
 

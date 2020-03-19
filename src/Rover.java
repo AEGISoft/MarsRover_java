@@ -20,7 +20,11 @@ public class Rover {
 		} else if ("b".equalsIgnoreCase(command)){
 			location = new Point((int) location.getX(), (int) location.getY() - 1);
 		} else {
-    		direction = DirectionEnum.EAST;
+    		if (direction == DirectionEnum.NORTH) {
+    			direction = DirectionEnum.EAST;
+    		} else if (direction == DirectionEnum.EAST) {
+				direction = DirectionEnum.SOUTH;
+			}
 		}
 
     }
