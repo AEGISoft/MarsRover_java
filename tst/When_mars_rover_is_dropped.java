@@ -61,7 +61,9 @@ class When_mars_rover_is_commanded_to_turn {
     private static Stream<Arguments> provideDirectionsForRightTest() {
         return Stream.of(
                 Arguments.of(DirectionEnum.NORTH,DirectionEnum.EAST),
-                Arguments.of(DirectionEnum.EAST,DirectionEnum.SOUTH)
+                Arguments.of(DirectionEnum.EAST,DirectionEnum.SOUTH),
+                Arguments.of(DirectionEnum.SOUTH,DirectionEnum.WEST),
+                Arguments.of(DirectionEnum.WEST,DirectionEnum.NORTH)
         );
     }
 
