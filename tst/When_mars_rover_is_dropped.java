@@ -51,3 +51,16 @@ class When_mars_rover_is_commanded_to_move {
      }
 
 }
+
+class When_mars_rover_is_commanded_to_turn {
+	@Test
+	void right_it_should_be_facing_90_degrees_clockwise() {
+		Point dropLocation = new Point(0,0);
+
+		Rover rover = new Rover(dropLocation, DirectionEnum.NORTH);
+
+		rover.move("R");
+
+		Assertions.assertEquals(DirectionEnum.EAST, rover.getDirection());
+	}
+}
