@@ -1,7 +1,13 @@
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.EnumSource;
+import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.awt.*;
+import java.util.stream.Stream;
 
 class When_mars_rover_is_dropped {
     @Test
@@ -53,14 +59,36 @@ class When_mars_rover_is_commanded_to_move {
 }
 
 class When_mars_rover_is_commanded_to_turn {
-	@Test
-	void right_it_should_be_facing_90_degrees_clockwise() {
+
+    private static Stream<Arguments> provideDirectionsforRightTest() {
+        return Stream.of(
+                Arguments.of(DirectionEnum.NORTH,DirectionEnum.EAST)
+                //Arguments.of(DirectionEnum.EAST,DirectionEnum.SOUTH)
+        );
+    }
+
+	@ParameterizedTest
+    @MethodSource("provideDirectionsforRightTest")
+	void right_it_should_be_facing_90_degrees_clockwise(DirectionEnum directionStart, DirectionEnum expectedDirection) {
 		Point dropLocation = new Point(0,0);
 
-		Rover rover = new Rover(dropLocation, DirectionEnum.NORTH);
+		Rover rover = new Rover(dropLocation, directionStart);
 
 		rover.move("R");
 
-		Assertions.assertEquals(DirectionEnum.EAST, rover.getDirection());
+		Assertions.assertEquals(expectedDirection, rover.getDirection());
 	}
+
+
+
+	@Test
+    void left_it_should_be_facing_90_degrees_counterclockwise() {
+        Point dropLocation = new Point(0,0);
+
+        Rover rover = new Rover(dropLocation, DirectionEnum.NORTH);
+
+        rover.move("R");
+
+        Assertions.assertEquals(DirectionEnum.EAST, rover.getDirection());
+    }
 }
