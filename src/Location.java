@@ -23,4 +23,8 @@ public class Location {
     Point moveForwardPoint() {
         return new Point((int) locationPoint.getX(), (int) locationPoint.getY() + 1);
     }
+
+    public Point getPoint() {
+        return locationPoint;
+    }
 }
