@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.util.Objects;
 
 public class Rover {
     private Location location;
@@ -37,5 +38,19 @@ public class Rover {
 
     public DirectionEnum getDirection() {
         return direction;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Rover rover = (Rover) o;
+        return location.equals(rover.location) &&
+                direction == rover.direction;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(location, direction);
     }
 }

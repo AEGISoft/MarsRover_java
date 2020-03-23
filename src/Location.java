@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.util.Objects;
 
 public class Location {
     private Point locationPoint;
@@ -26,5 +27,18 @@ public class Location {
 
     public Point getPoint() {
         return locationPoint;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Location location = (Location) o;
+        return locationPoint.equals(location.locationPoint);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(locationPoint);
     }
 }

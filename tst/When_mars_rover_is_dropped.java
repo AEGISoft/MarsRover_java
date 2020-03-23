@@ -23,7 +23,7 @@ class When_mars_rover_is_dropped {
 
 		Rover rover = new Rover(dropLocation, DirectionEnum.NORTH);
 
-		Assertions.assertEquals(DirectionEnum.NORTH, rover.getDirection());
+		Assertions.assertEquals(new Rover(new Location(dropLocation), DirectionEnum.NORTH), rover);
 	}
 
 }
