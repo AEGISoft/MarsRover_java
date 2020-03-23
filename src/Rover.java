@@ -9,7 +9,7 @@ public class Rover {
         location = dropLocation;
     }
 
-    public Rover moveRover(Command command){
+    public Rover move(Command command){
         switch (command){
             case MOVE_FORWARD:      return new Rover(location.moveForward(), direction);
             case MOVE_BACKWARDS:    return new Rover(location.moveBackwards(), direction);
@@ -18,16 +18,6 @@ public class Rover {
             default: throw new IllegalArgumentException("command not supported");
         }
     }
-    public Rover move(char command) {
-        if (moveForwardIsThe(String.valueOf(command)))      { return new Rover(location.moveForward(), direction);   }
-        if (moveBackwardsIsThe(String.valueOf(command)))    { return new Rover(location.moveBackwards(), direction); }
-        if (turnRightIsThe(String.valueOf(command)))        { return new Rover(location, direction.turnRight());     }
-        return new Rover(location, direction.turnLeft());
-    }
-
-    private boolean turnRightIsThe(String command)      { return "r".equalsIgnoreCase(command); }
-    private boolean moveBackwardsIsThe(String command)  { return "b".equalsIgnoreCase(command); }
-    private boolean moveForwardIsThe(String command)    { return "f".equalsIgnoreCase(command); }
 
     @Override
     public boolean equals(Object o) {
