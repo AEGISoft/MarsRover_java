@@ -1,13 +1,25 @@
 public enum DirectionEnum {
-	NORTH (0),
-	EAST(90),
-	SOUTH(180),
-	WEST (270);
+	NORTH {
+		@Override DirectionEnum turnRight(){return EAST;}
+		@Override DirectionEnum turnLeft(){return WEST;}
+	},
 
-	private int degrees;
+	EAST{
+		@Override DirectionEnum turnRight(){return SOUTH;}
+		@Override DirectionEnum turnLeft(){return NORTH;}
+	},
 
-	DirectionEnum(int degrees){
-		this.degrees = degrees;
-	}
+	SOUTH{
+		@Override DirectionEnum turnRight(){return WEST;}
+		@Override DirectionEnum turnLeft(){return EAST;}
+	},
+
+	WEST{
+		@Override DirectionEnum turnRight(){return NORTH;}
+		@Override DirectionEnum turnLeft(){return SOUTH;}
+	};
+
+	abstract DirectionEnum turnRight();
+	abstract DirectionEnum turnLeft();
 }
 
