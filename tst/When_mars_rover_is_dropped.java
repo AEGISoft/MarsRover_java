@@ -14,7 +14,7 @@ class When_mars_rover_is_dropped {
 
         Rover rover = new Rover(dropLocation, DirectionEnum.NORTH);
 
-        Assertions.assertEquals(dropLocation, rover.getLocation());
+        Assertions.assertEquals(dropLocation, rover.getLocationPoint());
     }
 
 	@Test
@@ -39,7 +39,7 @@ class When_mars_rover_is_commanded_to_move {
 
         Point expectedLocation = new Point(0,1);
 
-        Assertions.assertEquals(expectedLocation, rover.getLocation());
+        Assertions.assertEquals(expectedLocation, rover.getLocationPoint());
      }
      @Test
     public void backwards_it_should_move_in_the_opposite_direction_it_is_facing(){
@@ -51,7 +51,7 @@ class When_mars_rover_is_commanded_to_move {
 
         Point expectedLocation = new Point(0,-1);
 
-        Assertions.assertEquals(expectedLocation, rover.getLocation());
+        Assertions.assertEquals(expectedLocation, rover.getLocationPoint());
      }
 
 }
