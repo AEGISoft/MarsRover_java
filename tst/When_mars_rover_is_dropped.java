@@ -80,15 +80,24 @@ class When_mars_rover_is_commanded_to_turn {
 	}
 
 
+    private static Stream<Arguments> provideDirectionsForLeftTest() {
+        return Stream.of(
+                Arguments.of(DirectionEnum.NORTH,DirectionEnum.WEST),
+                Arguments.of(DirectionEnum.WEST,DirectionEnum.SOUTH),
+                Arguments.of(DirectionEnum.SOUTH,DirectionEnum.EAST),
+                Arguments.of(DirectionEnum.EAST,DirectionEnum.NORTH)
+        );
+    }
 
-	@Test
-    void left_it_should_be_facing_90_degrees_counterclockwise() {
+    @ParameterizedTest
+    @MethodSource("provideDirectionsForLeftTest")
+    void left_it_should_be_facing_90_degrees_counterclockwise(DirectionEnum directionStart, DirectionEnum expectedDirection) {
         Point dropLocation = new Point(0,0);
 
-        Rover rover = new Rover(dropLocation, DirectionEnum.NORTH);
+        Rover rover = new Rover(dropLocation, directionStart);
 
-        rover.move("R");
+        rover.move("L");
 
-        Assertions.assertEquals(DirectionEnum.EAST, rover.getDirection());
+        Assertions.assertEquals(expectedDirection, rover.getDirection());
     }
 }

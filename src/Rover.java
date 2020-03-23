@@ -19,10 +19,11 @@ public class Rover {
             location = new Point((int) location.getX(), (int) location.getY() + 1);
         } else if ("b".equalsIgnoreCase(command)) {
             location = new Point((int) location.getX(), (int) location.getY() - 1);
-        } else {
+        } else if ("r".equalsIgnoreCase(command)) {
             direction = direction.turnRight();
+        } else {
+            direction = direction.turnLeft();
         }
-
     }
 
     public DirectionEnum getDirection() {
