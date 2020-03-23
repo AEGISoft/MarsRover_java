@@ -2,9 +2,9 @@ import java.util.Objects;
 
 public class Rover {
     private Location location;
-    private DirectionEnum direction;
+    private Direction direction;
 
-    public Rover(Location dropLocation, DirectionEnum direction) {
+    public Rover(Location dropLocation, Direction direction) {
         this.direction = direction;
         location = dropLocation;
     }
@@ -20,6 +20,14 @@ public class Rover {
     }
 
     @Override
+    public String toString() {
+        return "Rover{" +
+                "@" + location +
+                ", facing=" + direction +
+                '}';
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -32,4 +40,5 @@ public class Rover {
     public int hashCode() {
         return Objects.hash(location, direction);
     }
+
 }

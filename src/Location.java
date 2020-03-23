@@ -22,6 +22,11 @@ public class Location {
     }
 
     @Override
+    public String toString() {
+        return "Location{" + locationPoint.x + ", " + locationPoint.x + "}";
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
