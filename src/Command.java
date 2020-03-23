@@ -1,0 +1,3 @@
+public enum Command {
+    MOVE_BACKWARDS, TURN_RIGHT, TURN_LEFT, MOVE_FORWARD
+}
