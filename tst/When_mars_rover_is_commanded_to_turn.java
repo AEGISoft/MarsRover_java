@@ -17,7 +17,7 @@ public class When_mars_rover_is_commanded_to_turn {
 	void right_it_should_be_facing_90_degrees_clockwise(DirectionEnum directionStart, DirectionEnum expectedDirection) {
         Assertions.assertEquals(
                 new Rover(new Location(0,0), expectedDirection),
-                new Rover(new Location(0,0), directionStart).moveRover('R'));
+                new Rover(new Location(0,0), directionStart).move('R'));
 	}
 
     private static Stream<Arguments> provideDirectionsForLeftTest() {
@@ -31,6 +31,6 @@ public class When_mars_rover_is_commanded_to_turn {
     void left_it_should_be_facing_90_degrees_counterclockwise(DirectionEnum directionStart, DirectionEnum expectedDirection) {
         Assertions.assertEquals(
                 new Rover(new Location(0,0), expectedDirection),
-                new Rover(new Location(0,0), directionStart).moveRover('L'));
+                new Rover(new Location(0,0), directionStart).move('L'));
     }
 }

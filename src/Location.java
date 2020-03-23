@@ -14,23 +14,11 @@ public class Location {
     }
 
     Location moveBackwards(){
-        return new Location(moveBackwardsPoint());
+        return new Location(new Point((int) locationPoint.getX(), (int) locationPoint.getY() - 1));
     }
 
     Location moveForward(){
-        return new Location(moveForwardPoint());
-    }
-
-    Point moveBackwardsPoint() {
-        return new Point((int) locationPoint.getX(), (int) locationPoint.getY() - 1);
-    }
-
-    Point moveForwardPoint() {
-        return new Point((int) locationPoint.getX(), (int) locationPoint.getY() + 1);
-    }
-
-    public Point getPoint() {
-        return locationPoint;
+        return new Location(new Point((int) locationPoint.getX(), (int) locationPoint.getY() + 1));
     }
 
     @Override
