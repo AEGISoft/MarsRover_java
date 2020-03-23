@@ -4,6 +4,10 @@ import java.util.Objects;
 public class Location {
     private Point locationPoint;
 
+    public Location(int x, int y)
+    {
+        this.locationPoint = new Point(x,y);
+    }
     public Location(Point locationPoint)
     {
         this.locationPoint = locationPoint;
