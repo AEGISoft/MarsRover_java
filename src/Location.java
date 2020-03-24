@@ -13,8 +13,14 @@ public class Location {
         this.locationPoint = locationPoint;
     }
 
-    Location moveBackwards(){
-        return new Location(new Point((int) locationPoint.getX(), (int) locationPoint.getY() - 1));
+    Location moveBackwards(Direction direction){
+        switch (direction){
+            case NORTH:return new Location(new Point((int) locationPoint.getX(), (int) locationPoint.getY() - 1));
+            case EAST: return new Location(new Point((int) locationPoint.getX() - 1, (int) locationPoint.getY()));
+            case SOUTH:return new Location(new Point((int) locationPoint.getX(), (int) locationPoint.getY() + 1));
+            case WEST: return new Location(new Point((int) locationPoint.getX() + 1, (int) locationPoint.getY()));
+            default: throw new IllegalArgumentException("no such direction");
+        }
     }
 
     Location moveForward(Direction direction){
