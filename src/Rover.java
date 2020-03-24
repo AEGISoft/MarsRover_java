@@ -10,7 +10,9 @@ public class Rover {
     }
 
     public Rover move(Commands commands) {
-        return this.move(Command.TURN_RIGHT).move(Command.MOVE_FORWARD);
+        Rover rover = this; //ignore IDE concurrency warning as Rover is designed to being immutable
+        for (Command command: commands.asArray()) rover = rover.move(command);
+        return rover;
     }
 
     public Rover move(Command command){
