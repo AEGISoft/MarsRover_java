@@ -6,7 +6,6 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
-@Disabled("while fixing moving based on direction")
 public class When_mars_rover_receives_multiple_commands {
     private static Stream<Arguments> commandSequence() {
         return Stream.of(
