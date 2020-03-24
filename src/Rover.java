@@ -9,6 +9,10 @@ public class Rover {
         location = dropLocation;
     }
 
+    public Rover move(Commands commands) {
+        return this.move(Command.TURN_RIGHT).move(Command.MOVE_FORWARD);
+    }
+
     public Rover move(Command command){
         switch (command){
             case MOVE_FORWARD:      return new Rover(location.moveForward(), direction);
