@@ -23,7 +23,7 @@ public class Location {
 
     @Override
     public String toString() {
-        return "Location{" + locationPoint.x + ", " + locationPoint.x + "}";
+        return "Location{" + locationPoint.x + ", " + locationPoint.y + "}";
     }
 
     @Override
