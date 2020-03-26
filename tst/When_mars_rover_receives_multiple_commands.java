@@ -9,7 +9,9 @@ public class When_mars_rover_receives_multiple_commands {
     private static Stream<Arguments> commandSequence() {
         return Stream.of(
 
-            Arguments.of(0, 0, Direction.NORTH, "RF", 1, 0, Direction.EAST)
+            Arguments.of(0, 0, Direction.NORTH, "RF", 1, 0, Direction.EAST),
+            Arguments.of(0, 0, Direction.NORTH, "RFF", 2, 0, Direction.EAST),
+            Arguments.of(0, 0, Direction.NORTH, "RFFLBL", 2, -1, Direction.WEST)
 
         );}
     @ParameterizedTest @MethodSource("commandSequence")
