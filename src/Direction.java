@@ -2,30 +2,45 @@ import java.awt.*;
 
 public enum Direction {
 	NORTH {
-		@Override Location moveBackwards(Point locationPoint) {
-			return new Location(new Point((int) locationPoint.getX(), (int) locationPoint.getY() - 1));
+		@Override Location moveBackwards() {
+			return new Location(0, - 1);
+		}
+
+		@Override Location moveForwards() {
+			return new Location(0,1);
 		}
 	},
 	EAST{
-		@Override Location moveBackwards(Point locationPoint) {
-			return new Location(new Point((int) locationPoint.getX() - 1, (int) locationPoint.getY()));
+		@Override Location moveBackwards() {
+			return new Location(-1,0);
+		}
+
+		@Override Location moveForwards() {
+			return new Location(1, 0);
 		}
 	},
 	SOUTH{
-		@Override Location moveBackwards(Point locationPoint) {
-			return new Location(new Point((int) locationPoint.getX(), (int) locationPoint.getY() + 1));
+		@Override Location moveBackwards() {
+			return new Location(0, 1);
+		}
+
+		@Override Location moveForwards() {
+			return new Location(0, -1);
 		}
 	},
 	WEST{
-		@Override Location moveBackwards(Point locationPoint) {
-			return new Location(new Point((int) locationPoint.getX() + 1, (int) locationPoint.getY()));
+		@Override Location moveBackwards() {
+			return new Location(1,0);
+		}
+
+		@Override Location moveForwards() {
+			return new Location(- 1, 0);
 		}
 	};
 
+	abstract Location moveBackwards();
 
-
-
-	abstract Location moveBackwards(Point locationPoint);
+	abstract Location moveForwards();
 
 	Direction turnRight(){
 		switch (this){
