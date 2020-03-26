@@ -10,15 +10,16 @@ public class Location {
         this.y = y;
     }
 
+
     Location moveBackwards(Direction direction){
         return this.add(direction.moveBackwards());
     }
-
     Location moveForward(Direction direction) {
         return this.add(direction.moveForwards());
     }
 
-    public Location add(Location other) {
+
+    private Location add(Location other) {
         return new Location(x + other.x, y + other.y);
     }
 
