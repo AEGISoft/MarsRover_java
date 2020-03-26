@@ -1,8 +1,18 @@
+import java.awt.*;
+
 public enum Direction {
-	NORTH,
+	NORTH {
+		@Override Location moveBackwards(Point locationPoint) {
+			return new Location(new Point((int) locationPoint.getX(), (int) locationPoint.getY() - 1));
+		}
+	},
 	EAST,
 	SOUTH,
 	WEST;
+
+	Location moveBackwards(Point locationPoint) {
+		return null;
+	}
 
 	Direction turnRight(){
 		switch (this){
