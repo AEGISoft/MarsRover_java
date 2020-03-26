@@ -3,16 +3,23 @@ import java.util.Objects;
 
 public class Location {
     private Point locationPoint;
-
+    private int x;
+    private int y;
 
     public Location(int x, int y)
     {
+        this.x = x;
+        this.y = y;
         this.locationPoint = new Point(x,y);
     }
     public Location(Point locationPoint)
     {
         this.locationPoint = locationPoint;
+        this.x = locationPoint.x;
+        this.y = locationPoint.y;
     }
+
+
 
     Location moveBackwards(Direction direction){
         return direction.moveBackwards(locationPoint);
@@ -20,17 +27,17 @@ public class Location {
 
     Location moveForward(Direction direction){
         switch (direction){
-            case NORTH:return new Location(new Point((int) locationPoint.getX(), (int) locationPoint.getY() + 1));
-            case EAST: return new Location(new Point((int) locationPoint.getX() + 1, (int) locationPoint.getY()));
-            case SOUTH:return new Location(new Point((int) locationPoint.getX(), (int) locationPoint.getY() - 1));
-            case WEST: return new Location(new Point((int) locationPoint.getX() - 1, (int) locationPoint.getY()));
+            case NORTH:return new Location(x,y + 1);
+            case EAST: return new Location(x + 1, y);
+            case SOUTH:return new Location(x, y - 1);
+            case WEST: return new Location(x - 1, y);
             default: throw new IllegalArgumentException("no such direction");
         }
     }
 
     @Override
     public String toString() {
-        return "Location{" + locationPoint.x + ", " + locationPoint.y + "}";
+        return "Location{" + x + ", " + y + "}";
     }
 
     @Override
@@ -38,7 +45,7 @@ public class Location {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Location location = (Location) o;
-        return locationPoint.equals(location.locationPoint);
+        return x == location.x && y == location.y;
     }
 
     @Override
@@ -46,7 +53,7 @@ public class Location {
         return Objects.hash(locationPoint);
     }
 
-    public Location add(Location location) {
-        return new Location(locationPoint.x + location.locationPoint.x, locationPoint.y + location.locationPoint.y);
+    public Location add(Location other) {
+        return new Location(x + other.x, y + other.y);
     }
 }
