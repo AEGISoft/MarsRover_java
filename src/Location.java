@@ -4,6 +4,7 @@ import java.util.Objects;
 public class Location {
     private Point locationPoint;
 
+
     public Location(int x, int y)
     {
         this.locationPoint = new Point(x,y);
@@ -14,14 +15,7 @@ public class Location {
     }
 
     Location moveBackwards(Direction direction){
-        switch (direction){
-            case NORTH:
-                return direction.moveBackwards(locationPoint);
-        case EAST: return new Location(new Point((int) locationPoint.getX() - 1, (int) locationPoint.getY()));
-            case SOUTH:return new Location(new Point((int) locationPoint.getX(), (int) locationPoint.getY() + 1));
-            case WEST: return new Location(new Point((int) locationPoint.getX() + 1, (int) locationPoint.getY()));
-            default: throw new IllegalArgumentException("no such direction");
-        }
+        return direction.moveBackwards(locationPoint);
     }
 
     Location moveForward(Direction direction){
@@ -50,5 +44,9 @@ public class Location {
     @Override
     public int hashCode() {
         return Objects.hash(locationPoint);
+    }
+
+    public Location add(Location location) {
+        return new Location(locationPoint.x + location.locationPoint.x, locationPoint.y + location.locationPoint.y);
     }
 }

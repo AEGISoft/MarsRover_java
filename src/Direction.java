@@ -6,13 +6,26 @@ public enum Direction {
 			return new Location(new Point((int) locationPoint.getX(), (int) locationPoint.getY() - 1));
 		}
 	},
-	EAST,
-	SOUTH,
-	WEST;
+	EAST{
+		@Override Location moveBackwards(Point locationPoint) {
+			return new Location(new Point((int) locationPoint.getX() - 1, (int) locationPoint.getY()));
+		}
+	},
+	SOUTH{
+		@Override Location moveBackwards(Point locationPoint) {
+			return new Location(new Point((int) locationPoint.getX(), (int) locationPoint.getY() + 1));
+		}
+	},
+	WEST{
+		@Override Location moveBackwards(Point locationPoint) {
+			return new Location(new Point((int) locationPoint.getX() + 1, (int) locationPoint.getY()));
+		}
+	};
 
-	Location moveBackwards(Point locationPoint) {
-		return null;
-	}
+
+
+
+	abstract Location moveBackwards(Point locationPoint);
 
 	Direction turnRight(){
 		switch (this){
