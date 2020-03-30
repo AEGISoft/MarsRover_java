@@ -2,10 +2,10 @@ import java.util.Objects;
 
 public class Rover {
     private Location location;
-    private Direction direction;
+    private Direction facing;
 
-    public Rover(Location dropLocation, Direction direction) {
-        this.direction = direction;
+    public Rover(Location dropLocation, Direction facing) {
+        this.facing = facing;
         location = dropLocation;
     }
 
@@ -20,26 +20,26 @@ public class Rover {
     }
 
     Rover turnLeft() {
-        return new Rover(location, direction.turnLeft());
+        return new Rover(location, facing.turnLeft());
     }
 
     Rover turnRight() {
-        return new Rover(location, direction.turnRight());
+        return new Rover(location, facing.turnRight());
     }
 
     Rover moveBackward() {
-        return new Rover(location.moveBackwards(direction), direction);
+        return new Rover(location.moveBackwards(facing), facing);
     }
 
     Rover moveForward() {
-        return new Rover(location.moveForward(direction), direction);
+        return new Rover(location.moveForward(facing), facing);
     }
 
     @Override
     public String toString() {
         return "Rover{" +
                 "@" + location +
-                ", facing=" + direction +
+                ", facing=" + facing +
                 '}';
     }
 
@@ -49,12 +49,12 @@ public class Rover {
         if (o == null || getClass() != o.getClass()) return false;
         Rover rover = (Rover) o;
         return location.equals(rover.location) &&
-                direction == rover.direction;
+                facing == rover.facing;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(location, direction);
+        return Objects.hash(location, facing);
     }
 
 }
