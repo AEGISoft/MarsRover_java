@@ -4,7 +4,8 @@ public enum Command {
     MOVE_BACKWARDS { @Override Rover execute(Rover rover) { return rover.moveBackward();} },
     TURN_RIGHT { @Override Rover execute(Rover rover) { return rover.turnRight(); }},
     TURN_LEFT { @Override Rover execute(Rover rover) { return rover.turnLeft(); } },
-    MOVE_FORWARD { @Override Rover execute(Rover rover) { return rover.moveForward(); } };
+    MOVE_FORWARD { @Override Rover execute(Rover rover) { return rover.moveForward(); } },
+    UNKNOWN { @Override Rover execute(Rover rover) { return rover; } };
 
     abstract Rover execute(Rover rover);
 
@@ -14,7 +15,7 @@ public enum Command {
             case 'B' : return MOVE_BACKWARDS;
             case 'L' : return TURN_LEFT;
             case 'R' : return TURN_RIGHT;
-            default : throw new IllegalArgumentException("unsupported command");
+            default : return UNKNOWN;
         }
     }
 }
