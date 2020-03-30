@@ -1,22 +1,9 @@
 import static java.lang.Character.toUpperCase;
 
 public enum Command {
-    MOVE_BACKWARDS {
-        @Override
-        Rover execute(Rover rover) {
-            return null;
-        }
-    },
-    TURN_RIGHT {
-        @Override
-        Rover execute(Rover rover) {
-            return null;
-        }},
-    TURN_LEFT{
-        @Override
-        Rover execute(Rover rover) {
-            return null;
-        }},
+    MOVE_BACKWARDS { @Override Rover execute(Rover rover) { return rover.moveBackward();} },
+    TURN_RIGHT { @Override Rover execute(Rover rover) { return rover.turnRight(); }},
+    TURN_LEFT { @Override Rover execute(Rover rover) { return rover.turnLeft(); } },
     MOVE_FORWARD { @Override Rover execute(Rover rover) { return rover.moveForward(); } };
 
     abstract Rover execute(Rover rover);
