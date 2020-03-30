@@ -1,4 +1,5 @@
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -36,4 +37,27 @@ public class When_mars_rover_is_commanded_to_move {
             new Rover(new Location(expected_x, expected_y), direction),
             new Rover(new Location(0, 0), direction).move(Command.MOVE_BACKWARDS));
      }
+
+    private static Stream<Arguments> wrapping() {
+        return Stream.of(
+                Arguments.of( 0, Integer.MAX_VALUE, Direction.NORTH, Command.MOVE_FORWARD, 0, Integer.MIN_VALUE),
+                Arguments.of( 0, Integer.MAX_VALUE, Direction.SOUTH, Command.MOVE_BACKWARDS, 0, Integer.MIN_VALUE),
+
+                Arguments.of( 0, Integer.MIN_VALUE, Direction.SOUTH, Command.MOVE_FORWARD, 0, Integer.MAX_VALUE),
+                Arguments.of( 0, Integer.MIN_VALUE, Direction.NORTH, Command.MOVE_BACKWARDS, 0, Integer.MAX_VALUE),
+
+                Arguments.of( Integer.MAX_VALUE, 0, Direction.EAST, Command.MOVE_FORWARD, Integer.MIN_VALUE, 0),
+                Arguments.of( Integer.MAX_VALUE, 0, Direction.WEST, Command.MOVE_BACKWARDS, Integer.MIN_VALUE, 0),
+
+                Arguments.of( Integer.MIN_VALUE, 0, Direction.WEST, Command.MOVE_FORWARD, Integer.MAX_VALUE, 0),
+                Arguments.of( Integer.MIN_VALUE, 0, Direction.EAST, Command.MOVE_BACKWARDS, Integer.MAX_VALUE, 0)
+        );}
+    @ParameterizedTest
+    @MethodSource("wrapping")
+    public void beyond_the_edge_of_the_world_it_should_reappear_on_the_other_side(int start_x, int start_y, Direction facing, Command command, int end_x, int end_y) {
+        Assertions.assertEquals(
+            new Rover(new Location(end_x, end_y), facing),
+            new Rover(new Location(start_x, start_y), facing).move(command)
+        );
+    }
 }
