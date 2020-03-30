@@ -17,12 +17,16 @@ public class Rover {
 
     public Rover move(Command command){
         switch (command){
-            case MOVE_FORWARD:      return new Rover(location.moveForward(direction), direction);
+            case MOVE_FORWARD:      return command.execute(this);
             case MOVE_BACKWARDS:    return new Rover(location.moveBackwards(direction), direction);
             case TURN_RIGHT:        return new Rover(location, direction.turnRight());
             case TURN_LEFT:         return new Rover(location, direction.turnLeft());
             default: throw new IllegalArgumentException("command not supported");
         }
+    }
+
+    Rover moveForward() {
+        return new Rover(location.moveForward(direction), direction);
     }
 
     @Override

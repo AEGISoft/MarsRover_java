@@ -1,7 +1,25 @@
 import static java.lang.Character.toUpperCase;
 
 public enum Command {
-    MOVE_BACKWARDS, TURN_RIGHT, TURN_LEFT, MOVE_FORWARD;
+    MOVE_BACKWARDS {
+        @Override
+        Rover execute(Rover rover) {
+            return null;
+        }
+    },
+    TURN_RIGHT {
+        @Override
+        Rover execute(Rover rover) {
+            return null;
+        }},
+    TURN_LEFT{
+        @Override
+        Rover execute(Rover rover) {
+            return null;
+        }},
+    MOVE_FORWARD { @Override Rover execute(Rover rover) { return rover.moveForward(); } };
+
+    abstract Rover execute(Rover rover);
 
     public static Command fromChar(char commandChar) {
         switch(toUpperCase(commandChar)){
