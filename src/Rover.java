@@ -6,12 +6,16 @@ public class Rover {
 
     public Rover(Location dropLocation, Direction facing) {
         this.facing = facing;
-        location = dropLocation;
+        this.location = dropLocation;
     }
 
     public Rover move(Commands commands) {
-        Rover rover = this; //ignore IDE concurrency warning as Rover is designed to being immutable
-        for (Command command: commands.asArray()) rover = rover.move(command);
+        Rover rover = this;
+
+        for (Command c : commands.asArray()) {
+            rover = rover.move(c);
+        }
+
         return rover;
     }
 
