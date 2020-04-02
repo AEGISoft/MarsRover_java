@@ -60,4 +60,18 @@ public class When_mars_rover_is_commanded_to_move {
             new Rover(new Location(start_x, start_y), facing).move(command)
         );
     }
+
+    private static Stream<Arguments> wrapping2() {
+        return Stream.of(
+                Arguments.of( 0, 10, Direction.NORTH, Command.MOVE_FORWARD, 0, -10, new World(10)),
+                Arguments.of( 0, 10, Direction.SOUTH, Command.MOVE_BACKWARDS, 0, -10, new World(10))
+        );}
+    @ParameterizedTest
+    @MethodSource("wrapping2")
+    public void beyond_the_edge_of_the_world_it_should_reappear_on_the_other_side2(int start_x, int start_y, Direction facing, Command command, int end_x, int end_y, World world) {
+        Assertions.assertEquals(
+                new Rover(new Location(end_x, end_y, world), facing),
+                new Rover(new Location(start_x, start_y, world), facing).move(command)
+        );
+    }
 }

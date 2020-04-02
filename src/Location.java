@@ -3,13 +3,19 @@ import java.util.Objects;
 public class Location {
     private int x;
     private int y;
+    private World world;
 
     public Location(int x, int y)
     {
-        this.x = x;
-        this.y = y;
+        this(x, y, new World());
     }
 
+    public Location(int x, int y, World world) {
+        this.x = x;
+        this.y = y;
+
+        this.world = world;
+    }
 
     Location moveBackwards(Direction direction){
         return this.add(direction.moveBackwards());
@@ -20,7 +26,7 @@ public class Location {
 
 
     private Location add(Location other) {
-        return new Location(x + other.x, y + other.y);
+        return world.correctCoordinates(x + other.x, y + other.y);
     }
 
     @Override
