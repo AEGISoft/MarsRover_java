@@ -12,7 +12,7 @@ public class Rover {
     public Rover move(Commands commands) {
         Rover rover = this;
 
-        for (Command c : commands.asArray()) {
+        for (Command c : commands) {
             rover = rover.move(c);
         }
 
