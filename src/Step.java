@@ -1,9 +1,13 @@
-public class Step {
-	public static final Location SOUTH = new Location(0, - 1);
+public class Step extends Coordinate {
+	public static final Step SOUTH = new Step(0, - 1);
 
-	public static final Location NORTH = new Location(0,1);
+	public static final Step NORTH = new Step(0,1);
 
-	public static final Location EAST = new Location(1, 0);
+	public static final Step EAST = new Step(1, 0);
 
-	public static final Location WEST = new Location(-1, 0);
+	public static final Step WEST = new Step(-1, 0);
+
+	private Step(int x, int y) {
+		super(x, y);
+	}
 }

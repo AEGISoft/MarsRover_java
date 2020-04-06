@@ -1,8 +1,6 @@
 import java.util.Objects;
 
-public class Location {
-    private int x;
-    private int y;
+public class Location extends Coordinate {
     private World world;
 
     public Location(int x, int y)
@@ -11,8 +9,7 @@ public class Location {
     }
 
     public Location(int x, int y, World world) {
-        this.x = x;
-        this.y = y;
+        super(x, y);
 
         this.world = world;
     }
@@ -25,8 +22,8 @@ public class Location {
     }
 
 
-    private Location add(Location other) {
-        return world.correctCoordinates(x + other.x, y + other.y);
+    private Location add(Step step) {
+        return world.correctCoordinates(x + step.x, y + step.y);
     }
 
     @Override
