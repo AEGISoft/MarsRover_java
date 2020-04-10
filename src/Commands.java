@@ -1,8 +1,6 @@
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Spliterator;
-import java.util.function.Consumer;
+import java.util.*;
+import java.util.function.*;
+import java.util.stream.*;
 
 public class Commands implements Iterable<Command> {
     private List<Command> commands;
@@ -28,5 +26,14 @@ public class Commands implements Iterable<Command> {
     @Override
     public Spliterator<Command> spliterator() {
         return commands.spliterator();
+    }
+
+    public Rover repeatOnEachResultingRover(Rover initialRover, BiFunction<Rover, ? super Command, Rover> action) {
+        BinaryOperator<Rover> combiner = (r1, r2) -> {throw new UnsupportedOperationException();};
+        return this.asStream().reduce(initialRover, action, combiner);
+    }
+
+    Stream<Command> asStream(){
+        return commands.stream();
     }
 }

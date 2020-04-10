@@ -1,4 +1,5 @@
 import java.util.Objects;
+import java.util.function.BiFunction;
 
 public class Rover {
     private Location location;
@@ -10,13 +11,8 @@ public class Rover {
     }
 
     public Rover move(Commands commands) {
-        Rover rover = this;
-
-        for (Command c : commands) {
-            rover = rover.move(c);
-        }
-
-        return rover;
+        BiFunction<Rover, ? super Command, Rover> action = Rover::move;
+        return commands.repeatOnEachResultingRover(this, action);
     }
 
     public Rover move(Command command){
