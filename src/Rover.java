@@ -12,11 +12,11 @@ public class Rover {
 
     public Rover move(Commands commands) {
         BiFunction<Rover, ? super Command, Rover> action = Rover::move;
-        return commands.repeatOnEachResultingRover(this, action);
+        return commands.executeAccumulativelyStartingWith(this, action);
     }
 
     public Rover move(Command command){
-        return command.execute(this);
+        return command.executeOn(this);
     }
 
     Rover turnLeft() {

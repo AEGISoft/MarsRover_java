@@ -1,6 +1,5 @@
 import java.util.*;
 import java.util.function.*;
-import java.util.stream.*;
 
 public class Commands implements Iterable<Command> {
     private List<Command> commands;
@@ -28,12 +27,9 @@ public class Commands implements Iterable<Command> {
         return commands.spliterator();
     }
 
-    public Rover repeatOnEachResultingRover(Rover initialRover, BiFunction<Rover, ? super Command, Rover> action) {
+    public Rover executeAccumulativelyStartingWith(Rover initialRover, BiFunction<Rover, ? super Command, Rover> action) {
         BinaryOperator<Rover> combiner = (r1, r2) -> {throw new UnsupportedOperationException();};
-        return this.asStream().reduce(initialRover, action, combiner);
+        return commands.stream().reduce(initialRover, action, combiner);
     }
 
-    Stream<Command> asStream(){
-        return commands.stream();
-    }
 }
